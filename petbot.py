@@ -35,7 +35,7 @@ async def main():
         for d in detections:
             print("getting detections")
             print(d)
-            if d.confidence > 0.1 and d.class_name.lower == "dog":
+            if d.class_name.lower == "dog":
                 print("This is a dog!")
                 found = True
 
@@ -52,7 +52,7 @@ async def main():
 
             await asyncio.sleep(60)
         else:
-            print("There's nobody here, don't send a message")
+            print("No dogs in sight, don't send a message")
             await asyncio.sleep(10)
     await asyncio.sleep(5)
 
