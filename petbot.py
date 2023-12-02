@@ -33,8 +33,6 @@ async def main():
 
         found = False
         for d in detections:
-            print("getting detections")
-            print(d)
             if d.class_name.lower() == "dog":
                 print("This is a dog!")
                 found = True
@@ -47,7 +45,7 @@ async def main():
 
             yag = yagmail.SMTP(os.getenv("GMAIL_USERNAME"), os.getenv("GMAIL_PASSWORD"))
             contents = ['Dog in the table! - protect your foood!',
-                        img_path]
+                        yagmail.inline(img_path)]
             yag.send(os.getenv("SMS_GATEWAY"), 'petbot', contents)
 
             await asyncio.sleep(60)
