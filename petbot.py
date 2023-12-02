@@ -19,15 +19,9 @@ async def connect():
 
 async def main():
     robot = await connect()
-
-    print('Resources:')
-    print(robot.resource_names)
     
     # picam
     picam = Camera.from_robot(robot, "picam")
-  
-    # detectionCam
-    detection_cam = Camera.from_robot(robot, "detectionCam")
   
     # petdetector
     petdetector = VisionClient.from_robot(robot, "petdetector")
@@ -39,7 +33,7 @@ async def main():
 
         found = False
         for d in detections:
-            if d.confidence > 0.7 and d.class_name.lower == "dog":
+            if d.confidence > 0.5 and d.class_name.lower == "dog":
                 print("This is a dog!")
                 found = True
 
