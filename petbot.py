@@ -35,7 +35,7 @@ async def main():
         for d in detections:
             print("getting detections")
             print(d)
-            if d.confidence > 0.5 and d.class_name.lower == "dog":
+            if d.confidence > 0.1 and d.class_name.lower == "dog":
                 print("This is a dog!")
                 found = True
 
