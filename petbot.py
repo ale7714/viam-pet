@@ -33,7 +33,7 @@ async def main():
 
         found = False
         for d in detections:
-            if d.class_name.lower() == "dog":
+            if  d.confidence > 0.1 && d.class_name.lower() == "dog":
                 print("This is a dog!")
                 found = True
 
@@ -44,7 +44,7 @@ async def main():
             img.save(img_path)
 
             yag = yagmail.SMTP(os.getenv("GMAIL_USERNAME"), os.getenv("GMAIL_PASSWORD"))
-            contents = ['Dog in the table! - protect your foood!',
+            contents = ['Dog at the table! - protect your foood!',
                         yagmail.inline(img_path)]
             yag.send(os.getenv("SMS_GATEWAY"), 'petbot', contents)
 
